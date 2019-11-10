@@ -89,6 +89,7 @@ class GlobalSettingsPreferenceFragment : PreferenceFragmentCompat() {
         portLocalDns.setOnBindEditTextListener(EditTextPreferenceModifiers.Port)
         val portTransproxy = findPreference<EditTextPreference>(Key.portTransproxy)!!
         portTransproxy.setOnBindEditTextListener(EditTextPreferenceModifiers.Port)
+        val customSsLocal = findPreference<EditTextPreference>(Key.customSsLocal)!!
         val onServiceModeChange = Preference.OnPreferenceChangeListener { _, newValue ->
             val (enabledLocalDns, enabledTransproxy) = when (newValue as String?) {
                 Key.modeProxy -> Pair(false, false)
@@ -106,6 +107,7 @@ class GlobalSettingsPreferenceFragment : PreferenceFragmentCompat() {
             tfo.isEnabled = stopped
             serviceMode.isEnabled = stopped
             portProxy.isEnabled = stopped
+            customSsLocal.isEnabled = stopped
             if (stopped) onServiceModeChange.onPreferenceChange(null, DataStore.serviceMode) else {
                 hosts.isEnabled = false
                 portLocalDns.isEnabled = false

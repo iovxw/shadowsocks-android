@@ -40,6 +40,7 @@ object Key {
     const val portProxy = "portProxy"
     const val portLocalDns = "portLocalDns"
     const val portTransproxy = "portTransproxy"
+    const val customSsLocal = "customSsLocal"
 
     const val route = "route"
 

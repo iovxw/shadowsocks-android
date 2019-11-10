@@ -39,4 +39,8 @@
         app:key="portTransproxy"
         app:title="@string/port_transproxy"
         app:useSimpleSummaryProvider="true"/>
+    <EditTextPreference
+        app:key="customSsLocal"
+        app:title="@string/custom_ss_local"
+        app:useSimpleSummaryProvider="true"/>
 </PreferenceScreen>

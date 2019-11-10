@@ -115,8 +115,11 @@ class ProxyInstance(val profile: Profile, private val route: String = profile.ro
         if (pluginPath != null) config.put("plugin", pluginPath).put("plugin_opts", plugin.toString())
         configFile.writeText(config.toString())
 
+        val exe = if (DataStore.customSsLocal.isNullOrEmpty()) {
+            File((service as Context).applicationInfo.nativeLibraryDir, Executable.SS_LOCAL).absolutePath
+        } else DataStore.customSsLocal!!
         val cmd = service.buildAdditionalArguments(arrayListOf(
-                File((service as Context).applicationInfo.nativeLibraryDir, Executable.SS_LOCAL).absolutePath,
+                exe,
                 "-b", DataStore.listenAddress,
                 "-l", DataStore.portProxy.toString(),
                 "-t", "600",

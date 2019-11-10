@@ -77,6 +77,9 @@ object DataStore : OnPreferenceDataStoreChangeListener {
     var portTransproxy: Int
         get() = getLocalPort(Key.portTransproxy, 8200)
         set(value) = publicStore.putString(Key.portTransproxy, value.toString())
+    var customSsLocal
+        get() = publicStore.getString(Key.customSsLocal)
+        set(value) = publicStore.putString(Key.customSsLocal, value)
 
     /**
      * Initialize settings that have complicated default values.
